@@ -38,6 +38,6 @@ jobs:
         with:
           # Upload entire repository
           path: 'public'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Zola Deploy
+        uses: zbrox/zola-deploy-action@0.12.2
+            
