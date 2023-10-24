@@ -1,0 +1,49 @@
+# The URL the site will be built for
+base_url = "https://nzt48.github.io/"
+theme = "hermit_zola"
+
+# Used in RSS by default
+title = "NZT"
+description = "Nikola Todorovic"
+# The default language, used in RSS
+default_language = "en"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+taxonomies = [
+           {name = "tags", rss = true}
+]
+
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+# Put all your custom variables here
+
+home_subtitle = "Nikola Todorovic"
+
+footer_copyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+
+hermit_menu = [
+    { link = "posts", name = "Posts" },
+    { link = "about", name = "About" }
+]
+
+hermit_social = [
+    { name = "twitter", link = "https://twitter.com/NZT_1A" },
+    { name = "github", link = "https://github.com/NZT48" },
+    { name = "linkedin", link = "https://www.linkedin.com/in/nikolatodorovic/" }
+   # { name = "email", link = "mailto:author@domain.com" }
+]
+
+
+
+[extra.author]
+name = "Nikola Todorovic"
