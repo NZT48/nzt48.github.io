@@ -10,6 +10,6 @@ toc=true
 
 ```rust
 fn main() {
-    println!("Hello World!");
+    println!("Happy hacking!");
 }
 ```
