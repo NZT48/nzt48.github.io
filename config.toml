@@ -33,7 +33,8 @@ footer_copyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/
 
 hermit_menu = [
     { link = "posts", name = "Posts" },
-    { link = "about", name = "About" }
+    { link = "about", name = "About" },
+    { link = "presentations", name = "Presentations" }
 ]
 
 hermit_social = [
