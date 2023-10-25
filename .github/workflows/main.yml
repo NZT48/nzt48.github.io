@@ -1,7 +1,7 @@
 name: Build/deploy website
 
 env:
-  ZOLA_VERSION: "0.15.3"
+  ZOLA_VERSION: "0.17.0"
   SOURCE_BRANCH: "master"
   TARGET_BRANCH: "master"
 
