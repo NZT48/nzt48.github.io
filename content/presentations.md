@@ -12,3 +12,5 @@ Welcome to the hub for my presentation materials and recordings. Below, you'll f
     * Conference: [PSSOH (Application of Free Software and Open Hardware)](https://pssoh.etf.bg.ac.rs/pssoh2019)
     * Date: 10.11.2019.
     * [Slides and paper in Serbian](https://zenodo.org/records/3534231)
+
+Feel free to explore the resources and get in touch if you have any questions or need additional information.
