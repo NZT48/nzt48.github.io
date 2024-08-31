@@ -1,5 +1,5 @@
 +++
-title = "Bypassing isContract check"
+title = "Bypassing isContract check in Smart contracts"
 date = 2024-08-31T11:36:33+08:00
 draft = false
 [taxonomies]
