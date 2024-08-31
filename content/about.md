@@ -2,11 +2,13 @@
 title="About"
 +++
 
-Hello world! My name is Nikola Todorovic. I'm an explorer of knowledge who thrives on constant learning, deeply immersed in the ever-evolving realms of cybersecurity and decentralization.
+Hello world! My name is Nikola Todorovic. I'm a blockchain engineer with a keen interest in security, constantly exploring the intersection of cybersecurity and decentralization.
 
-By day, I'm the Lead Blockchain Engineer at [TraceLabs](https://tracelabs.io/) ([OriginTrail](https://origintrail.io/) core developers), where I've had the incredible opportunity to be at the forefront of the blockchain and knowledge graphs intersection. In the OriginTrail ecosystem, I played a pivotal role in crafting the [OriginTrail Parachain](https://parachain.origintrail.io/) and building the groundbreaking [Decentralized Knowledge Graph (DKG)](https://dkg.origintrail.io/).
+I graduated from the School of Electrical Engineering at the University of Belgrade, majoring in Computer Engineering and Information Theory. Additionally, I am a graduate of the [Polkadot Blockchain Academy](https://www.polkadot.network/development/blockchain-academy/), Cambridge cohort, where I deepened my expertise in blockchain technologies.
 
-As a member of the [Cyber Security Network Foundation](https://cybersecurityserbia.rs/), I've had the privilege of organizing the [Serbian Cybersecurity Challenge](https://cyberhero.rs/scc/). But that's not all — I also serve as a coach for the Serbian national team, which competes on the [European Cyber Security Challenge (ECSC)](https://ecsc.eu/). Additionally, I'm the proud member of the CyberHero [community](https://discord.gg/QRVB4h8cre) and [CTF team](https://ctftime.org/team/130070), nurturing the next generation of cybersecurity experts.
+Previously, I was the Lead Blockchain Engineer at [TraceLabs](https://tracelabs.io/) ([OriginTrail](https://origintrail.io/) core developers), where I played a pivotal role in developing the [NeuroWeb AI Blockchain](https://neuroweb.ai/) and the innovative [Decentralized Knowledge Graph (DKG)](https://dkg.origintrail.io/). I continue to contribute to these projects, staying at the forefront of blockchain and knowledge graph technologies.
+
+As a member of the [Cyber Security Network Foundation](https://cybersecurityserbia.rs/) and coach of the Serbian national team for the [European Cyber Security Challenge (ECSC)](https://ecsc.eu/), and a key organizer of the [Serbian Cybersecurity Challenge](https://cyberhero.rs/scc/), I am deeply involved in the cybersecurity community. I also participate actively in the [CyberHero community](https://cyberhero.rs) and [CTF team](https://ctftime.org/team/130070), nurturing the next generation of cybersecurity experts.
 
 I'm curious about the crossroads where security meets other computer science fields. On this blog, you'll find discussions about topics like smart contracts security, SPARQL injection, open-source intelligence (OSINT)...
 
