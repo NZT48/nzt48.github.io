@@ -11,19 +11,28 @@ Welcome to my website and blog hosted as a GitHub page. This site is generated u
 
 To view this website, simply visit the [website link](https://nzt48.github.io/). If you're interested in contributing, here's how you can set up the project locally:
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/NZT48/nzt48.github.io
-    ```
-2. Install Zola if you haven't already.
-3.  Navigate to the project folder:
-    ```bash
-    cd nzt48.github.io
-    ```
-4. Run the development server:
-    ```bash
-    zola serve
-    ```
+- Clone the repository:
+
+```bash
+git clone https://github.com/NZT48/nzt48.github.io
+git submodule init
+git submodule update
+```
+
+- Install Zola if you haven't already.
+
+- Navigate to the project folder:
+
+```bash
+cd nzt48.github.io
+```
+
+- Run the development server:
+
+```bash
+zola serve
+```
+
 This will start a local development server, and you can access the site.
 
 ## License
