@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta itemprop="name" content="NZT" />
+  <meta itemprop="description" content="Nikola Todorovic" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://nzt48.github.io/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://nzt48.github.io/favicon-32x32.png" />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="https://nzt48.github.io/favicon-16x16.png"
+  />
+  <link
+    rel="shortcut icon"
+    href="https://nzt48.github.io/favicon.ico"
+  />
+  <link rel="stylesheet" href="https://nzt48.github.io/style.css"/>
+  
+  <title>Bypassing isContract check in Smart contracts</title>
+  
+
+  
+
+  <body id="page">
+
+	
+<header id="site-header" class="animated slideInUp faster">
+  <div class="hdr-wrapper section-inner">
+    <div class="hdr-left">
+      <div class="site-branding">
+        <a href="https:&#x2F;&#x2F;nzt48.github.io&#x2F;">NZT</a>
+      </div>
+      <nav class="site-nav hide-in-mobile">
+            
+        
+        <a href="https://nzt48.github.io/posts">Posts</a>
+        
+        <a href="https://nzt48.github.io/about">About</a>
+        
+        <a href="https://nzt48.github.io/presentations">Presentations</a>
+        
+      </nav>
+    </div>
+    <div class="hdr-right hdr-icons">
+      <span class="hdr-social hide-in-mobile">
+        
+
+<a href="https:&#x2F;&#x2F;twitter.com&#x2F;NZT_1A" target="_blank" rel="noopener me"
+   title="twitter">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+  
+</a>
+
+<a href="https:&#x2F;&#x2F;github.com&#x2F;NZT48" target="_blank" rel="noopener me"
+   title="github">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+  
+</a>
+
+<a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;nikolatodorovic&#x2F;" target="_blank" rel="noopener me"
+   title="linkedin">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+  
+</a>
+
+
+      </span>
+      <button id="menu-btn" class="hdr-btn" title="Menu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-menu"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div id="mobile-menu" class="animated fast">
+  <ul>
+    
+    <li><a href="https://nzt48.github.io/posts">Posts</a></li>
+    
+    <li><a href="https://nzt48.github.io/about">About</a></li>
+    
+    <li><a href="https://nzt48.github.io/presentations">Presentations</a></li>
+    
+  </ul>
+</div>
+
+	
+	
+
+		
+<main class="site-main section-inner animated fadeIn faster">
+  <article class="thin">
+	<header class="post-header">
+	  <div class="post-meta">
+		
+		<span>Aug 31, 2024</span>
+		<small> - 
+<span class="reading-time" title="Estimated read time">
+  
+  4 min read
+  
+</span>
+</small>
+		
+            
+            <button id="toc-btn" class="hdr-btn desktop-only-ib">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    class="feather feather-list">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3" y2="6"></line>
+                    <line x1="3" y1="12" x2="3" y2="12"></line>
+                    <line x1="3" y1="18" x2="3" y2="18"></line>
+                </svg>
+            </button>
+		    
+	  </div>
+	  <h1>Bypassing isContract check in Smart contracts</h1>
+	</header>
+
+	<div class="content">
+        
+	  <p>In the world of smart contract development, ensuring that only certain types of accounts can interact with your contract is crucial for maintaining security. One of the most common techniques used for this purpose is the <code>isContract</code> check. This check is often implemented to distinguish between externally owned accounts (EOAs) and other smart contracts, allowing developers to restrict or permit specific interactions.</p>
+<p>In this blog post, we will dive into the <code>isContract</code> check, explain how it works, and explore how it can be bypassed by an attacker. Understanding these mechanics is essential for any Solidity developer who wants to secure their smart contracts against common vulnerabilities.</p>
+<p>Let's start by examining the <code>isContract</code> check itself, which is typically implemented as follows:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">isContract</span><span>(</span><span style="color:#bf616a;">address account</span><span>) </span><span style="color:#8fa1b3;">public view returns </span><span>(</span><span style="color:#bf616a;">bool</span><span>) {
+</span><span>    </span><span style="color:#bf616a;">uint size</span><span>;
+</span><span>    </span><span style="color:#bf616a;">assembly </span><span>{
+</span><span>        size := </span><span style="color:#8fa1b3;">extcodesize</span><span>(</span><span style="color:#bf616a;">account</span><span>)
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">size </span><span>&gt; </span><span style="color:#d08770;">0</span><span>;
+</span><span>}
+</span></code></pre>
+<p>First line defines a public function named isContract that takes an address as input and returns a boolean value. The view keyword indicates that this function does not modify the contract's state, only reads from it. A local variable size is declared to store the size of the code at the given address. This will be used to determine if the address belongs to a contThisract or an EOA.</p>
+<p>Assembly block of code uses Solidity's inline assembly to access lower-level operations. The <code>extcodesize</code> opcode is called, which retrieves the size of the code stored at the specified address. The result is stored in the size variable. If the address is an EOA, extcodesize will return 0, as EOAs have no associated code. If the address is a contract, extcodesize will return a value greater than 0.</p>
+<h2 id="check-in-action">Check in action</h2>
+<p>Now that we've covered how the <code>isContract</code> check works, let's see it in action within the King of Ether game. The King of Ether game is a well-known example among Solidity developers. It is simple to implement but also serves as an excellent demonstration of a Denial of Service (DOS) attack. The game revolves around a single function call to claim the throne, where the caller becomes the new king if they send more Ether than the current king. The Ether sent by the previous king is then returned to them.</p>
+<p>If someone were to call the <code>claimThrone</code> function from a smart contract that does not implement a <code>fallback</code> function, they would successfully take the throne. However, any subsequent attempts by others to claim the throne with a higher bid would fail. This failure occurs because the Ether return transaction to the attacking contract (the current king) would revert due to the missing <code>fallback</code> function. As a result, the contract becomes permanently locked, preventing anyone else from becoming the king.</p>
+<p>To address this vulnerability, we expanded the King of Ether game by implementing a check to determine whether the caller is a smart contract. It might seem at first glance that this issue could be resolved by checking the size of the code at the caller's address using the <code>isContract</code> check.</p>
+<p>Here’s the implementation of the <code>claimThrone</code> function, now with the <code>isContract</code> check in place:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#bf616a;">pragma solidity </span><span>^</span><span style="color:#d08770;">0.8</span><span>.</span><span style="color:#d08770;">10</span><span>;
+</span><span>
+</span><span style="color:#bf616a;">contract KingOfEther </span><span>{
+</span><span>    </span><span style="color:#bf616a;">address public king</span><span>;
+</span><span>    </span><span style="color:#bf616a;">uint public balance</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">isContract</span><span>(</span><span style="color:#bf616a;">address account</span><span>) </span><span style="color:#8fa1b3;">public view returns </span><span>(</span><span style="color:#bf616a;">bool</span><span>) {
+</span><span>        </span><span style="color:#bf616a;">uint size</span><span>;
+</span><span>        </span><span style="color:#bf616a;">assembly </span><span>{
+</span><span>            size := </span><span style="color:#8fa1b3;">extcodesize</span><span>(</span><span style="color:#bf616a;">account</span><span>)
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">size </span><span>&gt; </span><span style="color:#d08770;">0</span><span>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">claimThrone</span><span>() </span><span style="color:#8fa1b3;">external payable </span><span>{
+</span><span>        </span><span style="color:#96b5b4;">require</span><span>(</span><span style="color:#bf616a;">msg</span><span>.value &gt; </span><span style="color:#bf616a;">balance</span><span>, &quot;</span><span style="color:#a3be8c;">Need to pay more to become the king</span><span>&quot;);
+</span><span>        </span><span style="color:#96b5b4;">require</span><span>(!</span><span style="color:#8fa1b3;">isContract</span><span>(</span><span style="color:#bf616a;">msg</span><span>.</span><span style="color:#bf616a;">sender</span><span>), &quot;</span><span style="color:#a3be8c;">No contract allowed</span><span>&quot;);
+</span><span>
+</span><span>        (</span><span style="color:#bf616a;">bool sent</span><span>, ) = </span><span style="color:#bf616a;">king</span><span>.</span><span style="color:#bf616a;">call</span><span>{value: </span><span style="color:#bf616a;">balance</span><span>}(&quot;&quot;);
+</span><span>        </span><span style="color:#96b5b4;">require</span><span>(</span><span style="color:#bf616a;">sent</span><span>, &quot;</span><span style="color:#a3be8c;">Failed to send Ether</span><span>&quot;);
+</span><span>
+</span><span>        </span><span style="color:#bf616a;">balance </span><span>= </span><span style="color:#bf616a;">msg</span><span>.value;
+</span><span>        </span><span style="color:#bf616a;">king </span><span>= </span><span style="color:#bf616a;">msg</span><span>.</span><span style="color:#bf616a;">sender</span><span>;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>In this expanded version of the game, we introduced the isContract check to prevent smart contracts from claiming the throne. However, as we will explore in the next section, even this enhanced protection can be bypassed.</p>
+<h2 id="bypassing-the-check">Bypassing the check</h2>
+<p>An attacker looking to bypass the <code>isContract</code> check can do so by leveraging a specific property of how Ethereum smart contracts are deployed. The key to this attack lies in understanding that the code within a contract's constructor is executed before the contract is fully deployed. This means that during the execution of the constructor, the contract's code size is still zero, making the <code>extcodesize</code> check ineffective.</p>
+<p>The attacker should move the call to the <code>claimThrone</code> function into the constructor of a malicious contract. Since the contract's code is not yet deployed at the time the constructor runs, the <code>extcodesize</code> function returns 0. This tricks the <code>isContract</code> check into treating the attacker’s contract as if it were an externally owned account (EOA), allowing the contract to claim the throne.</p>
+<p>Here’s an example of such a malicious contract:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#bf616a;">contract exploitKing </span><span>{
+</span><span>    </span><span style="color:#bf616a;">KingOfEtherInterface kingOfEtherAddress</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#8fa1b3;">constructor</span><span>(</span><span style="color:#bf616a;">KingOfEtherInterface _kingOfEther</span><span>) </span><span style="color:#bf616a;">payable </span><span>{
+</span><span>        </span><span style="color:#bf616a;">kingOfEtherAddress </span><span>= </span><span style="color:#8fa1b3;">KingOfEtherInterface</span><span>(</span><span style="color:#bf616a;">_kingOfEther</span><span>);
+</span><span>        </span><span style="color:#bf616a;">kingOfEtherAddress</span><span>.</span><span style="color:#bf616a;">claimThrone</span><span>{value: </span><span style="color:#bf616a;">msg</span><span>.value}();
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>This attack effectively bypasses the security measure implemented by the isContract check, highlighting a critical vulnerability in smart contract development. Understanding this attack is crucial for developers to implement more robust security measures in their contracts.</p>
+<h2 id="effective-methods-to-determine-if-the-caller-is-a-contract">Effective methods to determine if the caller is a contract</h2>
+<p>Given the limitations of the <code>isContract</code> check, particularly its vulnerability to constructor-based exploits, developers must consider alternative strategies to more accurately determine if the caller is a contract. Here are some more robust approaches:</p>
+<h3 id="time-based-or-multi-transaction-validation">Time-Based or Multi-Transaction Validation</h3>
+<p>One approach is to delay the critical operations that should not be executed by contracts until after the deployment is complete. For instance, you could require the caller to perform a multi-step process, where the final step occurs after the contract's deployment. In this example, <code>claimThrone</code> function would be split in two, first <code>initClaimThrone</code> which locally registers request for claiming at a specific and after that second <code>claimThrone</code> function which can be executed after the current block is incemented.</p>
+<h3 id="using-the-tx-origin-for-certain-checks">Using the tx.origin for Certain Checks</h3>
+<p>In some cases, you might consider using the tx.origin variable, which returns the original sender of the transaction. While generally discouraged for authorization purposes due to its susceptibility to phishing and other attacks, tx.origin can be useful in specific contexts where you want to ensure that the transaction originates from an EOA.</p>
+<p>Example of check:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#96b5b4;">require</span><span>(</span><span style="color:#bf616a;">tx</span><span>.</span><span style="color:#bf616a;">origin </span><span>== </span><span style="color:#bf616a;">msg</span><span>.</span><span style="color:#bf616a;">sender</span><span>, &quot;</span><span style="color:#a3be8c;">Caller must be EOA</span><span>&quot;);
+</span></code></pre>
+
+	</div>
+	<hr class="post-end">
+	<footer class="post-info">
+    
+	  <p>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+		
+		
+		<span class="tag"><a href="https://nzt48.github.io/tags/solidity/">solidity</a></span>
+		
+		<span class="tag"><a href="https://nzt48.github.io/tags/smart-contracts/">smart contracts</a></span>
+		
+		
+    </p>
+    
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1006 Words</p>
+    
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2024-08-31T11:36:33+08:00</p>
+    
+	</footer>
+  </article>
+    
+    <aside id="toc">
+        <div id="TableOfContents">
+            <div class="toc-title">Table of content</div>
+            <ul>
+                
+                <li>
+                    <a href="https://nzt48.github.io/posts/bypassing-iscontract/#check-in-action">Check in action</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://nzt48.github.io/posts/bypassing-iscontract/#bypassing-the-check">Bypassing the check</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="https://nzt48.github.io/posts/bypassing-iscontract/#effective-methods-to-determine-if-the-caller-is-a-contract">Effective methods to determine if the caller is a contract</a>
+                    
+                    <ul>
+                        
+                        <li>
+                            <a href="https://nzt48.github.io/posts/bypassing-iscontract/#time-based-or-multi-transaction-validation">Time-Based or Multi-Transaction Validation</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://nzt48.github.io/posts/bypassing-iscontract/#using-the-tx-origin-for-certain-checks">Using the tx.origin for Certain Checks</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </aside>
+    
+  
+  <div class="post-nav thin">
+	
+	
+  </div>
+
+  
+</main>
+
+	  </div>
+	  
+	  
+
+
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>&copy; 2025 <a href="https:&#x2F;&#x2F;nzt48.github.io&#x2F;">Nikola Todorovic</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+  <p>Made with <a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a> &#183; Theme <a href="https://github.com/VersBinarii/hermit_zola" target="_blank" rel="noopener">Hermit_Zola</a>
+	
+  </p>
+</footer>
+
+
+
+
+	</div>
+	
+	<script src="https://nzt48.github.io/js/main.js"></script>
+
+	<!-- Math rendering -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
+
+    
+
+	
+	<script src="https://nzt48.github.io/js/copy.js"></script>
+	
+	<script src="https://nzt48.github.io/js/main.js"></script>
+
+    
+    
+
+	
+  </body>
+</html>
